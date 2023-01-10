@@ -6,35 +6,27 @@ import {
   Switch,
 } from "react-router-dom";
 
-import MainNavigation from "./shared/Navigation/MainNavigation";
-import Auth from "./components/Auth";
-import NewPhoto from "./components/NewPhoto";
-import UserPhotos from "./components/UserPhotos";
+import NewPhoto from "./photos/pages/NewPhoto";
+import LandingPage from "./shared/components/UIElements/LandingPage";
+import MainNavigation from "./shared/components/Navigation/MainNavigation";
 
-import "./App.css";
-import LandingPage from "./components/LandingPage";
-
-function App() {
+const App = () => {
   return (
     <Router>
       <MainNavigation />
-      <Switch>
-        <Route path="/" exact>
-          <LandingPage />
-        </Route>
-        <Route path="/auth" exact>
-          <Auth />
-        </Route>
-        <Route path="/:userId/photos" exact>
-          <UserPhotos />
-        </Route>
-        <Route path="/photo/new" exact>
-          <NewPhoto />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <LandingPage />
+          </Route>
+          <Route path="/photos/new" exact>
+            <NewPhoto />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </Router>
   );
-}
+};
 
 export default App;
