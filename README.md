@@ -10,7 +10,7 @@ Tech stack used:
 
 ## Instructions
 
-### To run the server:
+### To run the server locally:
 1. Go into the /server folder and do `npm install` to install all required project dependencies.
 2. Create a `keys.js` config file to have the keys shown below shown below:
 ```
@@ -22,7 +22,7 @@ module.exports = {
 ```
 3. Run `npm start` 
 
-### To run the client:
+### To run the client locally:
 1. Go into the /client folder and do `npm install` to install all required project dependencies.
 2. Create a `keys.js` config file to have the keys shown below shown below:
 ```
