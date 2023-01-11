@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { useHttpClient } from "../../hooks/http-hook";
+import { AuthContext } from "../../context/auth-context.js";
 import ErrorModal from "../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../shared/UIElements/LoadingSpinner";
 import PhotoItems from "./PhotoItems";
@@ -10,13 +11,18 @@ const UserPhotos = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [galleryImages, setGalleryImages] = useState();
   // Gives access to the userId stored in the URL
-  const userId = useParams().userId;
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5001/api/photos/user/${userId}`
+          `http://localhost:5001/api/photos/user/${auth.userId}`,
+          "GET",
+          null,
+          {
+            Authorization: "Bearer " + auth.token,
+          }
         );
         let allPhotos = responseData.photos;
         let galleryImagesArray = [];
@@ -27,7 +33,7 @@ const UserPhotos = () => {
       } catch (err) {}
     };
     fetchPlaces();
-  }, [sendRequest, userId]);
+  }, [sendRequest, auth]);
 
   return (
     <React.Fragment>

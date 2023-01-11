@@ -14,32 +14,32 @@ import { AuthContext } from "./context/auth-context";
 import LoadingSpinner from "./components/shared/UIElements/LoadingSpinner";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(false);
   const [userId, setUserId] = useState();
 
-  const login = useCallback((uid) => {
-    setIsLoggedIn(true);
+  const login = useCallback((uid, token) => {
+    setToken(token);
     setUserId(uid);
   }, []);
   const logout = useCallback(() => {
-    setIsLoggedIn(false);
+    setToken(null);
     setUserId(null);
   }, []);
 
   let routes;
 
-  if (isLoggedIn) {
+  if (token) {
     routes = (
       <React.Fragment>
         {!userId && <LoadingSpinner asOverlay />}
         <Switch>
-          <Route path="/:userId/photos" exact>
+          <Route path="/photos" exact>
             <UserPhotos />
           </Route>
           <Route path="/photos/new" exact>
             <NewPhoto />
           </Route>
-          <Redirect to={!userId ? "/" : `/${userId}/photos`} />
+          <Redirect to={!userId ? "/" : "/photos"} />
         </Switch>
       </React.Fragment>
     );
@@ -57,7 +57,8 @@ const App = () => {
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn: isLoggedIn,
+        isLoggedIn: !!token,
+        token: token,
         userId: userId,
         login: login,
         logout: logout,

@@ -25,6 +25,7 @@ const NewPhoto = () => {
           }),
           {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + auth.token,
           }
         );
       } catch (err) {}
@@ -34,7 +35,7 @@ const NewPhoto = () => {
   };
 
   const handlePickerOverlayCancel = () => {
-    history.push(`/${auth.userId}/photos`);
+    history.push("/photos");
   };
 
   return (
