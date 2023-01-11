@@ -1,7 +1,7 @@
 import React from "react";
 
 const NewPhoto = () => {
-  return <h2>New Photo works!</h2>;
+  return <h2>NewPhoto</h2>;
 };
 
 export default NewPhoto;

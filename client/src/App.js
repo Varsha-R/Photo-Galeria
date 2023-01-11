@@ -6,9 +6,10 @@ import {
   Switch,
 } from "react-router-dom";
 
-import NewPhoto from "./photos/pages/NewPhoto";
-import LandingPage from "./shared/components/UIElements/LandingPage";
-import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import NewPhoto from "./components/photos/NewPhoto";
+import UserPhotos from "./components/photos/UserPhotos";
+import MainNavigation from "./components/shared/Navigation/MainNavigation";
+import Auth from "./components/user/Auth";
 
 const App = () => {
   return (
@@ -16,13 +17,16 @@ const App = () => {
       <MainNavigation />
       <main>
         <Switch>
-          <Route path="/" exact>
-            <LandingPage />
+          <Route path="/auth" exact>
+            <Auth />
+          </Route>
+          <Route path="/:userId/photos" exact>
+            <UserPhotos />
           </Route>
           <Route path="/photos/new" exact>
             <NewPhoto />
           </Route>
-          <Redirect to="/" />
+          <Redirect to="/auth" />
         </Switch>
       </main>
     </Router>
