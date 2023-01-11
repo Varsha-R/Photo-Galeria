@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import { AuthContext } from "../../../context/auth-context";
+
 import "./NavLinks.css";
 
 const NavLinks = (props) => {
-  const auth = { isLoggedIn: true, userId: "234323" };
+  const auth = useContext(AuthContext);
 
   return (
     <ul className="nav-links">
