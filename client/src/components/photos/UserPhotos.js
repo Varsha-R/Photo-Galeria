@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
 
 import { useHttpClient } from "../../hooks/http-hook";
 import { AuthContext } from "../../context/auth-context.js";
@@ -17,7 +16,7 @@ const UserPhotos = () => {
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5001/api/photos/user/${auth.userId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/photos/user/${auth.userId}`,
           "GET",
           null,
           {

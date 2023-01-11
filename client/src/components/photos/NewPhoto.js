@@ -6,7 +6,6 @@ import { useHttpClient } from "../../hooks/http-hook";
 import { AuthContext } from "../../context/auth-context";
 import ErrorModal from "../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../shared/UIElements/LoadingSpinner";
-import { FilestackAPIKey } from "../../config/keys";
 
 const NewPhoto = () => {
   const auth = useContext(AuthContext);
@@ -17,7 +16,7 @@ const NewPhoto = () => {
     if (result.filesUploaded) {
       try {
         await sendRequest(
-          "http://localhost:5001/api/photos",
+          process.env.REACT_APP_BACKEND_URL + "/photos",
           "POST",
           JSON.stringify({
             images: result.filesUploaded[0].url,
@@ -43,7 +42,7 @@ const NewPhoto = () => {
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && <LoadingSpinner asOverlay />}
       <PickerOverlay
-        apikey={FilestackAPIKey}
+        apikey={process.env.REACT_APP_FILESTACK_API_KEY}
         onSuccess={() => {}}
         onUploadDone={(res) => {
           placeSubmitHandler(res);
@@ -52,6 +51,7 @@ const NewPhoto = () => {
           onCancel: () => {
             handlePickerOverlayCancel();
           },
+          accept: "image/*",
         }}
       />
     </React.Fragment>

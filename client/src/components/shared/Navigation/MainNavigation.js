@@ -37,7 +37,7 @@ const MainNavigation = () => {
           <span />
         </button>
         <h2 className="main-navigation__title">
-          <Link to="/">Photo Gallery</Link>
+          <Link to="/">Photo Galería</Link>
         </h2>
         <nav className="main-navigation__header-nav">
           <NavLinks />
