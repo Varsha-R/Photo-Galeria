@@ -33,8 +33,7 @@ const NewPhoto = () => {
     }
   };
 
-  const handlePickerOverlayClose = () => {
-    console.log("Only on close");
+  const handlePickerOverlayCancel = () => {
     history.push(`/${auth.userId}/photos`);
   };
 
@@ -49,8 +48,8 @@ const NewPhoto = () => {
           placeSubmitHandler(res);
         }}
         pickerOptions={{
-          onClose: () => {
-            handlePickerOverlayClose();
+          onCancel: () => {
+            handlePickerOverlayCancel();
           },
         }}
       />
