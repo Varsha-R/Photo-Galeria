@@ -1,4 +1,4 @@
-# Photo-Gallery
+# Photo-Galería
 
 This repository contains the complete code (both client and server) for a simple Photo Gallery application.
 Tech stack used:
