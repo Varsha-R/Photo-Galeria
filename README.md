@@ -31,3 +31,6 @@ REACT_APP_BACKEND_URL=http://localhost:5001/api
 ```
 3. The keys *must* begin with `REACT_APP_`. The `REACT_APP_BACKEND_URL` will contain the port in which you are serving your /server code.
 4. Run `npm start` 
+
+---
+A screenshot of the completed app can be seen [here](https://drive.google.com/file/d/1KSIQb8dE7ujo-wCXUfnQny9OZ2gvooTa/view?usp=sharing)
